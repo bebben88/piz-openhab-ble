@@ -23,8 +23,6 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 
-COPY "/init.d/*" /etc/init.d/
-
 # Basic build-time metadata as defined at http://label-schema.org
 LABEL org.label-schema.build-date=$BUILD_DATE \
     org.label-schema.docker.dockerfile="/Dockerfile" \
