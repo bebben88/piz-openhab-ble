@@ -2,7 +2,7 @@
 FROM resin/raspberry-pi-debian:latest
 
 #enable building ARM container on x86 machinery on the web (comment out next line if built on Raspberry) 
-RUN [ "cross-build-start" ]
+#RUN [ "cross-build-start" ]
 # Set download urls
 ENV 	    JAVA_URL="https://www.azul.com/downloads/zulu/zdk-8-ga-linux_aarch32hf.tar.gz" 	    OPENHAB_URL="https://bintray.com/openhab/mvn/download_file?file_path=org%2Fopenhab%2Fdistro%2Fopenhab%2F2.3.0%2Fopenhab-2.3.0.zip" 	    OPENHAB_VERSION="2.3.0"
 
@@ -138,4 +138,4 @@ ENTRYPOINT ["/entrypoint.sh"]
 CMD ["gosu", "openhab", "./start.sh"]
 
 #stop processing ARM emulation (comment out next line if built on Raspberry)
-RUN [ "cross-build-end" ]
+#RUN [ "cross-build-end" ]
