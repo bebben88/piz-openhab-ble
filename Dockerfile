@@ -49,6 +49,20 @@ RUN apt-get update && \
     netbase \
     unzip \
     wget \
+    nano \
+    python-rpi.gpio \
+    iputils-ping \
+    net-tools \
+    build-essential \
+    dbus \
+    libglib2.0-dev \
+    libdbus-1-dev \
+    libudev-dev \
+    libical-dev \
+    libreadline6 \
+    libreadline-dev \
+    bluetooth \
+    libbluetooth-dev \
     zip && \
     ln -s -f /bin/true /usr/bin/chfn
 
@@ -76,6 +90,21 @@ RUN set -x \
     && gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
     && rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc \
     && chmod +x /usr/local/bin/gosu
+    
+# Install BlueZ
+RUN wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.47.tar.xz && \
+    tar -xf bluez-5.47.tar.xz && \
+    cd bluez-5.47 && \
+    ./configure --prefix=/usr \
+    --mandir=/usr/share/man \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-library \
+    --enable-experimental \
+    --enable-maintainer-mode \
+    --enable-deprecated && \
+    make && \
+    make install
 
 # Install openhab
 # Set permissions for openhab. Export TERM variable. See issue #30 for details!
