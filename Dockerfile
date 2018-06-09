@@ -121,7 +121,7 @@ RUN wget -nv -O /tmp/openhab.zip ${OPENHAB_URL} && \
 VOLUME ${APPDIR}/conf ${APPDIR}/userdata ${APPDIR}/addons
 
 # Reduce image size by removing files that are used only for building the image
-RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y dirmngr gnupg && \
+RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y --force-yes dirmngr gnupg && \
     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
