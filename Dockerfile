@@ -84,7 +84,6 @@ RUN    mkdir /etc/firmware \
     && make install \
 #clean up
     && rm -rf /tmp/* \
-    && apt-get remove wget \
     && apt-get -yqq autoremove \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
